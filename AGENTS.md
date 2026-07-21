@@ -53,4 +53,4 @@ npm run type-check
 npm run test:run     # vitest — composeToolPacks collision/cycle/order coverage
 ```
 
-Release via the manual GitHub "Release" button (bumps + publishes @latest).
+Push to `main` auto-releases a patch @latest (+ dispatches a tds-tools rebuild); the manual "Release" button is for a minor/major bump.
