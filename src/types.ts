@@ -6,7 +6,7 @@
  * BUILD time. There is no runtime plugin loading — the site imports each
  * package's {@link ToolPackManifest} and folds it into one static build
  * (`output: "static"`, no Node on prod). It is the tools-site twin of
- * `tds-panel-contract`, but frontend-only: the admin-controlled catalog
+ * `tds-frontend-contract`, but frontend-only: the admin-controlled catalog
  * (enabled / requires-login / premium / price) and the entitlement/Stripe logic
  * live in the `tds-ext-tools` panel extension, not here. A tool package declares
  * only the *defaults*; the admin catalog overrides them at runtime.

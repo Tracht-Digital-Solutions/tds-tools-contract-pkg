@@ -2,12 +2,12 @@
 
 The **tools-platform contract** — the SDK the public tools site (`tds-tools-frontend`) and
 every tool package (`tds-tool-*`) build against. It is the tools-site twin of
-`tds-panel-contract-pkg`, but **frontend-only**: pure TypeScript types +
+`tds-frontend-contract-pkg`, but **frontend-only**: pure TypeScript types +
 build-time composition helpers. There is no runtime plugin loading — the site
 imports each package's manifest and folds it into one static `dist/`.
 
 > The admin-controlled catalog (enabled / requires-login / premium / price) and
-> the entitlement + Stripe logic live in the **`tds-ext-tools-pkg`** panel extension,
+> the entitlement + Stripe logic live in the **`tds-ext-tools-pkg`** frontend extension,
 > not here. A tool package declares only the **defaults**; the catalog overrides
 > them at runtime.
 

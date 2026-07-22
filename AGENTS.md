@@ -6,18 +6,18 @@ Authoritative architecture/gotcha doc for this repo. Read before non-trivial cha
 
 The **tools-platform contract**: the SDK the public tools site (`tds-tools-frontend`) and
 every tool package (`tds-tool-*`) build against. It is the frontend-only twin of
-`tds-panel-contract-pkg` — modelled directly on it (`defineExtension`→`defineToolPack`,
-`composeExtensions`→`composeToolPacks`, `panelHost`→`toolHost`).
+`tds-frontend-contract-pkg` — modelled directly on it (`defineExtension`→`defineToolPack`,
+`composeExtensions`→`composeToolPacks`, `frontendHost`→`toolHost`).
 
 ## Architecture
 
 - **Build-time composition, not runtime plugins.** The site imports each pack's
   `ToolPackManifest` and `composeToolPacks` folds them into one `ComposedCatalog`.
   Composition happens during `astro build` (`output:static`, no Node on prod).
-- **Frontend-only.** No PHP half (unlike `tds-panel-contract-pkg`). The dynamic bits
+- **Frontend-only.** No PHP half (unlike `tds-frontend-contract-pkg`). The dynamic bits
   — admin-controlled catalog (enabled/requires-login/premium/price) and the
-  entitlement + Stripe checkout — live in the **`tds-ext-tools-pkg`** panel
-  extension + `tds-core-panel-api`. A tool declares only *defaults*
+  entitlement + Stripe checkout — live in the **`tds-ext-tools-pkg`** frontend
+  extension + `tds-core-frontend-api`. A tool declares only *defaults*
   (`requiresLoginDefault`, `premiumDefault`, `priceCentsDefault`); the admin
   catalog overrides them at runtime (merged in the site's `catalog.ts`).
 - **Two virtual modules** (`src/astro.ts`): `virtual:tools-catalog` (data) and
