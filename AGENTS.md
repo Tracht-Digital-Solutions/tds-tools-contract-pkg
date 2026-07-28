@@ -54,3 +54,37 @@ npm run test:run     # vitest — composeToolPacks collision/cycle/order coverag
 ```
 
 Push to `main` auto-releases a patch @latest (+ dispatches a tds-tools-frontend rebuild); the manual "Release" button is for a minor/major bump.
+
+## Tests
+
+```bash
+npm run test:run    # vitest, 62 tests
+```
+
+- `src/__tests__/registry.test.ts` — the original composition paths.
+- `src/__tests__/astro.test.ts` — the build-time site integration, previously
+  untested. Routing lives in the SITE (one `/tools/[slug].astro` driven by
+  `getStaticPaths`), so the integration's whole job is the two virtual modules —
+  and the one that must not drift is `virtual:tools-components`: the template
+  resolves a URL to a tool by **slug**, then looks the component up by **id**.
+  Keying that map by slug still produces a valid module and a site where every
+  page whose id and slug differ (the normal case) renders the wrong tool or
+  nothing. Also pinned: composition failures throw while CONSTRUCTING the
+  integration, `resolveId` ignores ids it does not own, the components map is
+  generated from the same SORTED array as the catalog, and an empty catalog
+  still emits a syntactically valid module.
+- `src/__tests__/validation.test.ts` — what a tool AUTHOR gets wrong. The price
+  is in **cents**, so a fractional `4.99` is rejected (it would round to four
+  cents downstream) while a legitimate `0` is accepted. Plus: the fields the
+  catalog card renders, kebab id/slug rules, per-tool error attribution, and
+  catalog ordering — **category first, then name**, with German collation so
+  "Änderung" sorts next to "A" rather than after "Z".
+
+Two invariants worth stating because a plausible refactor breaks them silently:
+
+- **The tool id and slug registries are SEPARATE.** One tool's slug may equal
+  another tool's id; a single shared `Set` would reject a valid catalog.
+- **Both i18n tables are merged.** An English table that stays empty renders
+  raw i18n keys as UI copy on every `/en` page.
+
+Verified by mutation: 37 deliberate breakages introduced, 37 caught.
