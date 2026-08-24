@@ -1,6 +1,6 @@
 {
   "name": "@tracht-digital-solutions/tds-tools-contract",
-  "version": "26.7.0",
+  "version": "1.0.7",
   "description": "The tools-platform contract (SDK): TypeScript types + build-time composition helpers that let the public tools site (tds-tools) discover and compose tool packages (tds-tool-*) at build time. Frontend-only; the admin catalog + premium live in the tds-ext-tools panel extension.",
   "license": "UNLICENSED",
   "private": false,
@@ -30,11 +30,11 @@
     "clean": "rimraf dist"
   },
   "devDependencies": {
-    "@types/node": "^22.10.0",
-    "rimraf": "^6.0.0",
-    "tsup": "^8.3.0",
-    "typescript": "^5.6.0",
-    "vitest": "^2.1.9"
+    "@types/node": "^26.2.0",
+    "rimraf": "^6.1.3",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.11"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
