@@ -29,6 +29,13 @@ export type ToolCategory =
   | "media"
   | "security"
   | "business"
+  /**
+   * Legal + labelling duties a business has to discharge on its own site:
+   * imprint, privacy policy, accessibility statement, AI-content marking.
+   * Its own section rather than a corner of `business`, because the reader
+   * arrives with a duty to fulfil rather than a task to speed up.
+   */
+  | "compliance"
   | "other";
 
 /** Per-tool SEO overrides baked into the tool page's `<head>` + JSON-LD. */
