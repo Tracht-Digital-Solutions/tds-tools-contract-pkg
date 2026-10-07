@@ -17,7 +17,7 @@ npm run test:run                # vitest
 
 ## Hard rules
 
-- **Every push to `main` publishes a `@latest` patch** and rebuilds `tds-tools-frontend`.
+- **Every push to `main` publishes a `@latest` patch** and deploys `tds-tools-frontend` (dispatches its `release.yml`).
   The manual "Release" button is for minor/major. A docs-only commit carries `[skip ci]`.
 - **Stable at 1.x.** Consumers pin `^1.x`. Ship additive minors; a breaking change needs a major
   and a coordinated migration of every pack and the site.

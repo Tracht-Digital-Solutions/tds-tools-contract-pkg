@@ -3,7 +3,7 @@
 - **CI is npm-only.** `_build.yml` has no PHP steps. Use `npm install --no-package-lock`,
   never `npm ci`.
 - **Every push to `main` publishes a `@latest` patch** and dispatches a
-  `tds-tools-frontend` rebuild. The bump commit carries `[skip ci]`, so it doesn't loop.
+  `tds-tools-frontend` **deploy** (its `release.yml`). The bump commit carries `[skip ci]`, so it doesn't loop.
 - The manual "Release" button is for a minor or major bump.
 - A release bumps `package.json` only (no `composer.json` half to keep in lockstep) and
   pushes an **annotated** tag.
