@@ -51,5 +51,7 @@ add an `astro` dependency.
   UI copy on every `/en` page.
 - Catalog order: **category first, then name**, with German collation so "Änderung" sorts
   next to "A", not after "Z".
+- `layout` (optional, 1.2.0): `"wide"` asks the site to give a workspace-style tool the full
+  content width; absent means the default two-column page. Unknown values are rejected.
 - Labels, names and descriptions are **German editable copy**. They live in the
   manifest, never inlined in a site page.

@@ -63,6 +63,9 @@ export function validateTool(tool: ToolDef): string[] {
   if (tool.priceCentsDefault !== undefined && (!Number.isInteger(tool.priceCentsDefault) || tool.priceCentsDefault < 0)) {
     errors.push(`priceCentsDefault must be a non-negative integer (got ${JSON.stringify(tool.priceCentsDefault)})`);
   }
+  if (tool.layout !== undefined && tool.layout !== "default" && tool.layout !== "wide") {
+    errors.push(`layout must be "default" or "wide" (got ${JSON.stringify(tool.layout)})`);
+  }
   return errors;
 }
 

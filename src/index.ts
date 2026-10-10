@@ -14,6 +14,7 @@ export type {
   I18nStrings,
   ToolCategory,
   ToolDef,
+  ToolLayout,
   ToolPackManifest,
   ToolSeo,
 } from "./types.js";

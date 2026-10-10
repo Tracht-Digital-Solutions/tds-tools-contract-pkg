@@ -85,7 +85,17 @@ export interface ToolDef {
   priceCentsDefault?: number;
   /** Optional SEO overrides for the tool page. */
   seo?: ToolSeo;
+  /**
+   * Page layout. `"default"` (or absent): the tool shares the row with the
+   * related-tools column. `"wide"`: the tool takes the full content width and
+   * that column moves below it — for workspace-style tools (editor + live
+   * preview) that are cramped beside a sidebar. Sites that predate this
+   * field simply render the default.
+   */
+  layout?: ToolLayout;
 }
+
+export type ToolLayout = "default" | "wide";
 
 /** Per-locale string tables a package contributes to the shared i18n dict. */
 export interface I18nStrings {

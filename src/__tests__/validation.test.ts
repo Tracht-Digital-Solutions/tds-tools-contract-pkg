@@ -81,6 +81,17 @@ describe("the price is in CENTS", () => {
 });
 
 describe("ids and slugs", () => {
+  it("accepts both layouts and an absent one", () => {
+    expect(validateTool(raw({ layout: "wide" }))).toEqual([]);
+    expect(validateTool(raw({ layout: "default" }))).toEqual([]);
+    expect(validateTool(raw({}))).toEqual([]);
+  });
+
+  it("rejects an unknown layout instead of silently ignoring it", () => {
+    const errors = validateTool(raw({ layout: "full" as unknown as ToolDef["layout"] }));
+    expect(errors.join()).toMatch(/layout/);
+  });
+
   it("accepts kebab ids and slugs with digits", () => {
     expect(validateTool(raw({ id: "pdf-2-word", slug: "pdf-2-word" }))).toEqual([]);
   });
