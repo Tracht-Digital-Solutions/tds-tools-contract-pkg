@@ -92,7 +92,10 @@ jobs:
           git add package.json
           git commit -m "release: ${new} [skip ci]"
           git tag -a "${new}" -m "release ${new}"
-          npm publish
+          # --tag latest is named on purpose: a stray 26.7.0 sits in the
+          # registry, and npm refuses to move "latest" DOWN implicitly
+          # ("Cannot implicitly apply the latest tag"). Same fix as the packs.
+          npm publish --tag latest
           git push --follow-tags origin HEAD:main
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
